@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2d2d2d">
+<meta name="description" content="L. Rodriguez — Obras y certificados de autenticidad">
+<title>L. Rodriguez — Arte</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+
+:root{
+  --bg:#2d2d2d;
+  --bg-deep:#252525;
+  --panel:#363636;
+  --panel-light:#3d3d3d;
+  --text:#f4f1ed;
+  --muted:#bdbbb8;
+  --line:rgba(255,255,255,.14);
+  --pink:#F860DE;
+  --yellow:#E4DC32;
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"DM Sans",Arial,sans-serif;
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+button,input{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(var(--max),calc(100% - 64px));margin:auto}
+
+/* ---------- HEADER ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  background:rgba(37,37,37,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:400 30px/1 "Playfair Display",serif}
+.logo-mark{
+  width:48px;height:4px;margin-top:7px;
+  background:linear-gradient(90deg,var(--pink) 0 55%,var(--yellow) 55%);
+}
+.menu{display:flex;gap:34px;align-items:center}
+.menu button,.menu a{
+  border:0;background:none;color:var(--text);
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  opacity:.85;
+}
+.menu button:hover,.menu a:hover{opacity:1}
+.instagram{
+  color:var(--pink);font-size:22px;
+  border-left:1px solid var(--line);padding-left:25px;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:700px;padding-top:82px;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:80px 7% 80px 0}
+.eyebrow{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#b9b7b4}
+.hero h1{
+  margin:20px 0 28px;
+  font:400 clamp(52px,6vw,92px)/.92 "Playfair Display",serif;
+  text-transform:uppercase;
+}
+.hero h1 span{color:var(--yellow)}
+.hero p{max-width:550px;color:var(--muted);font-size:15px;line-height:1.8;margin:0 0 30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;width:max-content;padding:0 22px;
+  border:1px solid rgba(255,255,255,.65);
+  background:transparent;color:var(--text);
+  text-transform:uppercase;letter-spacing:2px;font-size:10px;
+  transition:.2s;
+}
+.btn:hover{background:var(--text);color:#292929}
+.hero-art{
+  min-height:610px;
+  background:
+    linear-gradient(90deg,rgba(45,45,45,.08),rgba(45,45,45,.02)),
+    url("portada.png") center/cover no-repeat;
+  position:relative;
+}
+.hero-art:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(45,45,45,.2),transparent 35%);
+}
+
+/* ---------- WORKS ---------- */
+section{padding:105px 0}
+.works{background:#333}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
+.section-title{font:400 56px/1 "Playfair Display",serif;margin:12px 0 0}
+.mini-link{
+  border:0;background:none;color:var(--text);
+  font-size:10px;text-transform:uppercase;letter-spacing:2px;
+}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.work-card{
+  background:#282828;border:1px solid rgba(255,255,255,.06);
+  transition:transform .25s,background .25s;
+}
+.work-card:hover{transform:translateY(-4px);background:#2b2b2b}
+.work-image{
+  aspect-ratio:4/3;background:#454545 center/cover no-repeat;
+  position:relative;
+}
+.work-image.no-image{
+  background:linear-gradient(135deg,#454545,#292929);
+}
+.work-image:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(248,96,222,.16),transparent 50%,rgba(228,220,50,.12));
+  pointer-events:none;
+}
+.work-info{padding:20px}
+.work-no{font:400 34px "Playfair Display",serif}
+.work-title{text-transform:uppercase;letter-spacing:2px;font-size:11px;margin-top:3px}
+.work-meta{font-size:10px;color:#999;margin-top:5px}
+
+/* ---------- ABOUT ---------- */
+.about{display:grid;grid-template-columns:1fr 1.1fr;gap:75px;align-items:center}
+.about-art{
+  min-height:480px;
+  background:
+    linear-gradient(90deg,rgba(228,220,50,.20),transparent 25%),
+    url("sobre-mi.png") center/cover no-repeat;
+}
+.about h2{
+  font:400 clamp(45px,5vw,67px)/1 "Playfair Display",serif;
+  margin:16px 0 25px;
+}
+.about h2 span{color:var(--yellow)}
+.about p{max-width:620px;color:var(--muted);line-height:1.8}
+.about-list{
+  margin-top:35px;border-left:2px solid var(--pink);
+  padding-left:22px;display:grid;gap:15px;
+  text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#ddd;
+}
+
+/* ---------- CERTIFICATE INTRO ---------- */
+.certs{background:#333}
+.cert-intro{
+  max-width:800px;margin:auto;text-align:center;
+}
+.cert-intro h2{
+  font:400 clamp(45px,5vw,70px)/1 "Playfair Display",serif;
+  margin:15px 0 20px;
+}
+.cert-intro h2 span{color:var(--pink)}
+.cert-intro p{color:var(--muted);max-width:650px;margin:0 auto 30px;line-height:1.8}
+
+/* ---------- CERTIFICATE ACCESS MODAL ---------- */
+.modal{
+  position:fixed;inset:0;z-index:100;
+  display:none;align-items:center;justify-content:center;
+  padding:22px;
+  background:rgba(12,12,12,.78);
+  backdrop-filter:blur(12px);
+  overflow:auto;
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(620px,100%);
+  max-height:calc(100dvh - 44px);
+  overflow:auto;
+  background:#353535;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 25px 80px rgba(0,0,0,.5);
+  padding:clamp(25px,5vw,48px);
+  position:relative;
+}
+.close{
+  position:absolute;right:18px;top:14px;
+  width:40px;height:40px;border:0;background:transparent;
+  color:#ddd;font-size:30px;line-height:1;
+}
+.access-title{
+  font:400 clamp(38px,7vw,62px)/.98 "Playfair Display",serif;
+  margin:14px 0 18px;
+}
+.access-title span{color:var(--pink)}
+.access-copy{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:28px}
+.code-label{
+  display:block;text-transform:uppercase;letter-spacing:2px;
+  font-size:9px;color:#aaa;margin-bottom:8px;
+}
+.code-input{
+  width:100%;height:54px;border:1px solid #666;
+  background:#242424;color:white;padding:0 16px;
+  text-transform:uppercase;letter-spacing:2px;outline:none;
+}
+.code-input:focus{border-color:var(--pink)}
+.code-submit{width:100%;margin-top:12px}
+.code-error{min-height:22px;margin-top:10px;color:#ff9be9;font-size:11px}
+.code-hint{
+  margin-top:18px;padding:13px 15px;background:#2b2b2b;
+  color:#8f8f8f;font-size:10px;line-height:1.6;
+}
+
+/* ---------- RESULT MODAL ---------- */
+.result-card{
+  width:min(1050px,100%);
+  max-height:calc(100dvh - 32px);
+  overflow:auto;background:#353535;
+  border:1px solid rgba(255,255,255,.12);
+  position:relative;padding:clamp(20px,4vw,40px);
+}
+.result-header{padding-right:45px;margin-bottom:25px}
+.result-title{font:400 clamp(35px,5vw,60px)/1 "Playfair Display",serif;margin-top:8px}
+.result-grid{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
+  gap:30px;align-items:start;
+}
+.result-image{
+  width:100%;aspect-ratio:4/3;
+  background:#242424 center/cover no-repeat;
+  border:1px solid rgba(255,255,255,.1);
+}
+.result-image.no-image{
+  background:linear-gradient(135deg,#4a4a4a,#242424);
+}
+.details{display:grid;gap:15px}
+.detail{border-bottom:1px solid var(--line);padding-bottom:11px}
+.detail strong{
+  display:block;text-transform:uppercase;letter-spacing:2px;
+  font-size:8px;color:#999;margin-bottom:3px;
+}
+.detail span{font-size:13px;color:#eee}
+.download{
+  width:100%;margin-top:10px;
+  border-color:var(--pink);
+}
+.download:hover{background:var(--pink);color:#222}
+.no-pdf{
+  color:#ffb1ee;font-size:10px;line-height:1.5;
+  margin-top:8px;
+}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:42px 0}
+.footer{display:flex;justify-content:space-between;gap:30px;align-items:end}
+.footer small{color:#999;font-size:9px}
+.footer-nav{display:flex;gap:25px;font-size:9px;text-transform:uppercase;letter-spacing:2px}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:850px){
+  .container{width:calc(100% - 34px)}
+  .nav{height:70px}
+  .logo{font-size:25px}
+  .menu{gap:14px}
+  .menu a:first-child,.menu a:nth-child(3){display:none}
+  .menu button,.menu a{font-size:8px;letter-spacing:1.4px}
+  .instagram{padding-left:12px;font-size:19px}
+  .hero{display:flex;flex-direction:column;padding-top:70px}
+  .hero-copy{padding:70px 0 45px}
+  .hero h1{font-size:clamp(48px,14vw,72px)}
+  .hero p{font-size:13px}
+  .hero-art{min-height:390px}
+  section{padding:75px 0}
+  .section-head{display:block;margin-bottom:28px}
+  .section-title{font-size:48px}
+  .section-head .mini-link{display:none}
+  .work-grid{grid-template-columns:1fr;gap:15px}
+  .work-image{aspect-ratio:16/10}
+  .about{grid-template-columns:1fr;gap:35px}
+  .about-art{min-height:300px}
+  .about h2{font-size:46px}
+  .about-list{margin-top:28px}
+  .cert-intro{text-align:left}
+  .cert-intro p{margin-left:0}
+  .modal{padding:12px}
+  .modal-card,.result-card{
+    max-height:calc(100dvh - 24px);
+    border-radius:3px;
+  }
+  .result-grid{grid-template-columns:1fr;gap:22px}
+  .result-image{aspect-ratio:4/3}
+  .footer{display:block}
+  .footer-nav{margin-top:20px;flex-wrap:wrap;gap:16px}
+}
+@media(max-width:430px){
+  .menu a:nth-child(4){display:none}
+  .hero-copy{padding-top:55px}
+  .hero-art{min-height:300px}
+  .access-title{font-size:39px}
+  .result-title{font-size:39px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" aria-label="Inicio">
+      <div class="logo">l.rodriguez</div>
+      <div class="logo-mark"></div>
+    </a>
+
+    <nav class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#obras">Obras</a>
+      <button type="button" id="openCertificateMenu">Certificados</button>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a class="instagram" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero container" id="inicio">
+  <div class="hero-copy">
+    <div class="eyebrow">Arte que</div>
+    <h1>Trasciende<br>el <span>tiempo</span></h1>
+    <p>Pinturas que exploran la memoria, la identidad y la belleza de lo cotidiano, a través de una mirada contemporánea.</p>
+    <a class="btn" href="#obras">Ver obras&nbsp;&nbsp;→</a>
+  </div>
+  <div class="hero-art" aria-label="Imagen de portada"></div>
+</section>
+
+<section class="works" id="obras">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Selección</div>
+        <h2 class="section-title">Obras</h2>
+      </div>
+
+    </div>
+    <div class="work-grid" id="workGrid"></div>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="container about">
+    <div class="about-art" aria-hidden="true"></div>
+    <div>
+      <div class="eyebrow">Sobre mí</div>
+      <h2>El arte como <span>identidad</span></h2>
+      <p>L. Rodriguez es un artista visual que encuentra en la pintura una forma de explorar la memoria, la naturaleza y lo cotidiano. Su trabajo combina técnica, emoción y una búsqueda constante de identidad a través del color y la textura.</p>
+      <div class="about-list">
+        <div>Obras originales</div>
+        <div>Certificado de autenticidad</div>
+        <div>Registro digital de cada obra</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="certs" id="certificados">
+  <div class="container cert-intro">
+    <div class="eyebrow">Autenticidad</div>
+    <h2>Verifica una <span>obra</span></h2>
+    <p>Si tienes un certificado de L. Rodriguez, introduce su código de registro para consultar la obra, sus datos y descargar el certificado digital. El PDF solo aparece después de validar el código.</p>
+    <button class="btn" type="button" id="openCertificateMain">Consultar certificado&nbsp;&nbsp;→</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <div class="logo">l.rodriguez</div>
+      <div class="logo-mark"></div>
+      <small>© <span id="year"></span> — Todos los derechos reservados.</small>
+    </div>
+    <nav class="footer-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#obras">Obras</a>
+      <a href="#sobre-mi">Sobre mí</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ============ VENTANA PARA INTRODUCIR CÓDIGO ============ -->
+<div class="modal" id="accessModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="close" type="button" id="closeAccess" aria-label="Cerrar">×</button>
+
+    <div class="eyebrow">Verificación digital</div>
+    <h2 class="access-title">Certificado de <span>autenticidad</span></h2>
+    <p class="access-copy">
+      Introduce el código de registro que aparece en tu certificado.
+      El sistema localizará automáticamente la obra correspondiente.
+    </p>
+
+    <form id="certificateForm">
+      <label class="code-label" for="certificateCode">Código de registro</label>
+      <input
+        class="code-input"
+        id="certificateCode"
+        type="text"
+        placeholder="LR-2026-001"
+        autocomplete="off"
+        autocapitalize="characters"
+        spellcheck="false"
+        required
+      >
+      <button class="btn code-submit" type="submit">Buscar certificado&nbsp;&nbsp;→</button>
+      <div class="code-error" id="codeError" role="alert"></div>
+    </form>
+
+    <div class="code-hint">
+      El código distingue cada obra de forma individual.
+    </div>
+  </div>
+</div>
+
+<!-- ============ VENTANA CON LA OBRA Y SUS DATOS ============ -->
+<div class="modal" id="resultModal" aria-hidden="true">
+  <div class="result-card">
+    <button class="close" type="button" id="closeResult" aria-label="Cerrar">×</button>
+
+    <div class="result-header">
+      <div class="eyebrow">Obra verificada</div>
+      <h2 class="result-title" id="resultTitle"></h2>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-image" id="resultImage"></div>
+
+      <div class="details">
+        <div class="detail"><strong>Artista</strong><span>L. Rodriguez</span></div>
+        <div class="detail"><strong>Técnica</strong><span id="resultTechnique"></span></div>
+        <div class="detail"><strong>Medidas</strong><span id="resultSize"></span></div>
+        <div class="detail"><strong>Año</strong><span id="resultYear"></span></div>
+        <div class="detail"><strong>Número de registro</strong><span id="resultRegister"></span></div>
+        <div class="detail"><strong>Fecha de registro</strong><span id="resultDate"></span></div>
+        <div class="detail"><strong>Descripción</strong><span id="resultDescription"></span></div>
+
+        <a class="btn download" id="downloadPdf" href="#" target="_blank" rel="noopener">
+          Descargar certificado PDF&nbsp;&nbsp;↓
+        </a>
+        <div class="no-pdf" id="noPdf" hidden>
+          El certificado PDF todavía no ha sido agregado.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/*
+====================================================================
+                    CONFIGURACIÓN DE TUS OBRAS
+====================================================================
+
+ESTA ES LA ÚNICA PARTE QUE NORMALMENTE VAS A EDITAR.
+
+Para agregar una obra:
+1. Sube la foto a la misma carpeta que este HTML.
+2. Sube el PDF de su certificado a la misma carpeta.
+3. Copia un bloque de obra.
+4. Cambia los datos y los nombres de los archivos.
+
+Ejemplo de nombres:
+    obra4.jpg
+    certificado4.pdf
+
+El código de registro debe ser ÚNICO.
+
+IMPORTANTE:
+Este sistema es una página estática. El código NO es una contraseña
+segura de servidor; sirve como código de verificación. Si necesitas
+seguridad real contra acceso al PDF, hace falta un servidor/backend.
+====================================================================
+*/
+
+const OBRAS = [
+
+  {
+    codigo: "LR-2026-001",
+    titulo: "Obra 01",
+    tecnica: "Por definir",
+    medidas: "Por definir",
+    año: "Por definir",
+    fecha: "Por definir",
+    imagen: "obra1.jpg",
+    pdf: "",
+    descripcion: "Información de la obra pendiente de completar."
+  },
+
+  {
+    codigo: "LR-2026-002",
+    titulo: "Obra 02",
+    tecnica: "Por definir",
+    medidas: "Por definir",
+    año: "Por definir",
+    fecha: "Por definir",
+    imagen: "obra2.jpg",
+    pdf: "",
+    descripcion: "Información de la obra pendiente de completar."
+  },
+
+  {
+    codigo: "LR-2026-003",
+    titulo: "Obra 03",
+    tecnica: "Por definir",
+    medidas: "Por definir",
+    año: "Por definir",
+    fecha: "Por definir",
+    imagen: "obra3.png",
+    pdf: "",
+    descripcion: "Información de la obra pendiente de completar."
+  }
+
+];
+
+/* ====================== FUNCIONES ====================== */
+
+const $ = id => document.getElementById(id);
+
+function openAccess(){
+  $("accessModal").classList.add("open");
+  $("accessModal").setAttribute("aria-hidden","false");
+  document.body.classList.add("locked");
+  setTimeout(() => $("certificateCode").focus(), 120);
+}
+
+function closeAccess(){
+  $("accessModal").classList.remove("open");
+  $("accessModal").setAttribute("aria-hidden","true");
+  $("certificateCode").value = "";
+  $("codeError").textContent = "";
+  document.body.classList.remove("locked");
+}
+
+function openResult(work){
+  $("resultTitle").textContent = work.titulo;
+  $("resultTechnique").textContent = work.tecnica;
+  $("resultSize").textContent = work.medidas;
+  $("resultYear").textContent = work.año;
+  $("resultRegister").textContent = work.codigo;
+  $("resultDate").textContent = work.fecha;
+  $("resultDescription").textContent = work.descripcion;
+
+  const image = $("resultImage");
+  image.style.backgroundImage = "";
+  image.classList.remove("no-image");
+
+  if(work.imagen && work.imagen.trim()){
+    image.style.backgroundImage =
+      `url("${encodeURI(work.imagen)}")`;
+  }else{
+    image.classList.add("no-image");
+  }
+
+  const pdf = $("downloadPdf");
+  const noPdf = $("noPdf");
+
+  if(work.pdf && work.pdf.trim()){
+    pdf.href = encodeURI(work.pdf);
+    pdf.style.display = "inline-flex";
+    noPdf.hidden = true;
+  }else{
+    pdf.href = "#";
+    pdf.style.display = "none";
+    noPdf.hidden = false;
+  }
+
+  $("resultModal").classList.add("open");
+  $("resultModal").setAttribute("aria-hidden","false");
+  document.body.classList.add("locked");
+}
+
+function closeResult(){
+  $("resultModal").classList.remove("open");
+  $("resultModal").setAttribute("aria-hidden","true");
+  document.body.classList.remove("locked");
+}
+
+function renderWorks(){
+  const grid = $("workGrid");
+
+  grid.innerHTML = OBRAS.map((work,index) => {
+    const image = work.imagen
+      ? `style="background-image:url('${encodeURI(work.imagen)}')"`
+      : "";
+
+    return `
+      <article class="work-card">
+        <div class="work-image ${work.imagen ? "" : "no-image"}" ${image}></div>
+        <div class="work-info">
+          <div class="work-no">${String(index+1).padStart(2,"0")}</div>
+          <div class="work-title">${work.titulo}</div>
+          <div class="work-meta">${work.tecnica} · ${work.año}</div>
+        </div>
+      </article>
+    `;
+  }).join("");
+});
+}
+
+/* ====================== EVENTOS ====================== */
+
+$("openCertificateMenu").addEventListener("click", openAccess);
+$("openCertificateMain").addEventListener("click", openAccess);
+$("closeAccess").addEventListener("click", closeAccess);
+$("closeResult").addEventListener("click", closeResult);
+
+$("certificateForm").addEventListener("submit", function(event){
+  event.preventDefault();
+
+  const code = $("certificateCode").value.trim().toUpperCase();
+
+  if(!code){
+    $("codeError").textContent = "Introduce un código de registro.";
+    return;
+  }
+
+  const work = OBRAS.find(
+    item => item.codigo.trim().toUpperCase() === code
+  );
+
+  if(!work){
+    $("codeError").textContent =
+      "No encontramos ese código. Comprueba que esté escrito correctamente.";
+    return;
+  }
+
+  closeAccess();
+  openResult(work);
+});
+
+$("accessModal").addEventListener("click",event=>{
+  if(event.target === $("accessModal")) closeAccess();
+});
+
+$("resultModal").addEventListener("click",event=>{
+  if(event.target === $("resultModal")) closeResult();
+});
+
+document.addEventListener("keydown",event=>{
+  if(event.key === "Escape"){
+    closeAccess();
+    closeResult();
+  }
+});
+
+$("year").textContent = new Date().getFullYear();
+renderWorks();
+</script>
+
+</body>
+</html>

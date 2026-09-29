@@ -1,0 +1,35 @@
+L.RODRIGUEZ — SITIO WEB
+
+Archivos:
+- index.html
+- portada.png       -> portada
+- sobre-mi.png      -> sección Sobre mí
+- obra1.jpg         -> obra 1
+- obra2.jpg         -> obra 2
+- obra3.png         -> obra 3
+
+PARA SUBIRLO A GITHUB PAGES
+1. Sube TODOS los archivos de esta carpeta al repositorio.
+2. El archivo debe llamarse index.html.
+3. Las imágenes deben permanecer en la misma carpeta.
+
+CERTIFICADOS
+La sección "Certificados" pide un código como LR-2026-001.
+Solo después de introducir un código válido se muestra el resultado.
+El botón de descarga de PDF NO aparece en las tarjetas de obras.
+
+PARA AGREGAR UN CERTIFICADO
+1. Sube el PDF a la misma carpeta, por ejemplo:
+   certificado1.pdf
+2. En index.html, dentro de OBRAS, pon:
+   pdf: "certificado1.pdf"
+3. El código de la obra es el que el cliente tendrá que introducir.
+
+PARA CAMBIAR EL CÓDIGO
+Cambia únicamente:
+   codigo: "LR-2026-001"
+
+IMPORTANTE
+Este HTML es estático. El código sirve como verificación dentro de la página,
+pero no es una contraseña de servidor. Si el PDF está públicamente alojado,
+alguien que conozca su URL directa podría abrirlo.
