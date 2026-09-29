@@ -258,6 +258,13 @@ section{padding:105px 0}
   margin-top:8px;
 }
 
+
+.work-card{cursor:pointer}
+.work-card:focus{outline:2px solid var(--pink);outline-offset:3px}
+.work-card:hover{transform:translateY(-4px)}
+.instagram svg{width:20px;height:20px;display:block}
+.artwork-result .result-image{min-height:360px}
+
 /* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--line);padding:42px 0}
 .footer{display:flex;justify-content:space-between;gap:30px;align-items:end}
@@ -324,7 +331,13 @@ footer{border-top:1px solid var(--line);padding:42px 0}
       <a href="#obras">Obras</a>
       <button type="button" id="openCertificateMenu">Certificados</button>
       <a href="#sobre-mi">Sobre mí</a>
-      <a class="instagram" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+      <a class="instagram" href="https://instagram.com/l.rodriguez" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.7" r="1"></circle>
+      </svg>
+    </a>
     </nav>
   </div>
 </header>
@@ -396,6 +409,29 @@ footer{border-top:1px solid var(--line);padding:42px 0}
   </div>
 </footer>
 
+
+<!-- ============ VENTANA DE INFORMACIÓN DE LA OBRA ============ -->
+<div class="modal" id="artworkModal" aria-hidden="true">
+  <div class="result-card artwork-result">
+    <button class="close" type="button" id="closeArtwork" aria-label="Cerrar">×</button>
+    <div class="result-header">
+      <div class="eyebrow">Obra original</div>
+      <h2 class="result-title" id="artTitle"></h2>
+    </div>
+    <div class="result-grid">
+      <div class="result-image" id="artImage"></div>
+      <div class="details">
+        <div class="detail"><strong>Artista</strong><span>L. Rodriguez</span></div>
+        <div class="detail"><strong>Técnica</strong><span id="artTechnique"></span></div>
+        <div class="detail"><strong>Medidas</strong><span id="artSize"></span></div>
+        <div class="detail"><strong>Año</strong><span id="artYear"></span></div>
+        <div class="detail"><strong>Fecha</strong><span id="artDate"></span></div>
+        <div class="detail"><strong>Descripción</strong><span id="artDescription"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ VENTANA PARA INTRODUCIR CÓDIGO ============ -->
 <div class="modal" id="accessModal" aria-hidden="true">
   <div class="modal-card">
@@ -465,33 +501,16 @@ footer{border-top:1px solid var(--line);padding:42px 0}
 
 <script>
 /*
-====================================================================
-                    CONFIGURACIÓN DE TUS OBRAS
-====================================================================
+=============================================================
+DATOS DE LAS OBRAS
+Para reemplazar una foto, conserva el mismo nombre:
+obra1.jpg / obra2.jpg / obra3.png
 
-ESTA ES LA ÚNICA PARTE QUE NORMALMENTE VAS A EDITAR.
-
-Para agregar una obra:
-1. Sube la foto a la misma carpeta que este HTML.
-2. Sube el PDF de su certificado a la misma carpeta.
-3. Copia un bloque de obra.
-4. Cambia los datos y los nombres de los archivos.
-
-Ejemplo de nombres:
-    obra4.jpg
-    certificado4.pdf
-
-El código de registro debe ser ÚNICO.
-
-IMPORTANTE:
-Este sistema es una página estática. El código NO es una contraseña
-segura de servidor; sirve como código de verificación. Si necesitas
-seguridad real contra acceso al PDF, hace falta un servidor/backend.
-====================================================================
+Para agregar una obra, copia uno de estos objetos.
+El certificado PDF SOLO se muestra después de validar el código.
+=============================================================
 */
-
 const OBRAS = [
-
   {
     codigo: "LR-2026-001",
     titulo: "Obra 01",
@@ -503,7 +522,6 @@ const OBRAS = [
     pdf: "",
     descripcion: "Información de la obra pendiente de completar."
   },
-
   {
     codigo: "LR-2026-002",
     titulo: "Obra 02",
@@ -515,7 +533,6 @@ const OBRAS = [
     pdf: "",
     descripcion: "Información de la obra pendiente de completar."
   },
-
   {
     codigo: "LR-2026-003",
     titulo: "Obra 03",
@@ -527,10 +544,7 @@ const OBRAS = [
     pdf: "",
     descripcion: "Información de la obra pendiente de completar."
   }
-
 ];
-
-/* ====================== FUNCIONES ====================== */
 
 const $ = id => document.getElementById(id);
 
@@ -538,7 +552,7 @@ function openAccess(){
   $("accessModal").classList.add("open");
   $("accessModal").setAttribute("aria-hidden","false");
   document.body.classList.add("locked");
-  setTimeout(() => $("certificateCode").focus(), 120);
+  setTimeout(() => $("certificateCode").focus(), 100);
 }
 
 function closeAccess(){
@@ -549,7 +563,32 @@ function closeAccess(){
   document.body.classList.remove("locked");
 }
 
-function openResult(work){
+function openArtwork(work){
+  $("artTitle").textContent = work.titulo;
+  $("artTechnique").textContent = work.tecnica;
+  $("artSize").textContent = work.medidas;
+  $("artYear").textContent = work.año;
+  $("artDate").textContent = work.fecha;
+  $("artDescription").textContent = work.descripcion;
+
+  const image = $("artImage");
+  image.classList.remove("no-image");
+  image.style.backgroundImage = work.imagen
+    ? `url("${work.imagen}")`
+    : "";
+
+  $("artworkModal").classList.add("open");
+  $("artworkModal").setAttribute("aria-hidden","false");
+  document.body.classList.add("locked");
+}
+
+function closeArtwork(){
+  $("artworkModal").classList.remove("open");
+  $("artworkModal").setAttribute("aria-hidden","true");
+  document.body.classList.remove("locked");
+}
+
+function openCertificateResult(work){
   $("resultTitle").textContent = work.titulo;
   $("resultTechnique").textContent = work.tecnica;
   $("resultSize").textContent = work.medidas;
@@ -559,25 +598,20 @@ function openResult(work){
   $("resultDescription").textContent = work.descripcion;
 
   const image = $("resultImage");
-  image.style.backgroundImage = "";
   image.classList.remove("no-image");
-
-  if(work.imagen && work.imagen.trim()){
-    image.style.backgroundImage =
-      `url("${encodeURI(work.imagen)}")`;
-  }else{
-    image.classList.add("no-image");
-  }
+  image.style.backgroundImage = work.imagen
+    ? `url("${work.imagen}")`
+    : "";
 
   const pdf = $("downloadPdf");
   const noPdf = $("noPdf");
 
   if(work.pdf && work.pdf.trim()){
-    pdf.href = encodeURI(work.pdf);
+    pdf.href = work.pdf;
     pdf.style.display = "inline-flex";
     noPdf.hidden = true;
   }else{
-    pdf.href = "#";
+    pdf.removeAttribute("href");
     pdf.style.display = "none";
     noPdf.hidden = false;
   }
@@ -596,45 +630,49 @@ function closeResult(){
 function renderWorks(){
   const grid = $("workGrid");
 
-  grid.innerHTML = OBRAS.map((work,index) => {
-    const image = work.imagen
-      ? `style="background-image:url('${encodeURI(work.imagen)}')"`
-      : "";
+  grid.innerHTML = OBRAS.map((work,index) => `
+    <article class="work-card" tabindex="0" role="button" data-code="${work.codigo}">
+      <div
+        class="work-image ${work.imagen ? "" : "no-image"}"
+        ${work.imagen ? `style="background-image:url('${work.imagen}')"` : ""}
+      ></div>
+      <div class="work-info">
+        <div class="work-no">${String(index + 1).padStart(2,"0")}</div>
+        <div class="work-title">${work.titulo}</div>
+        <div class="work-meta">${work.tecnica} · ${work.año}</div>
+        <div class="work-open">Ver obra →</div>
+      </div>
+    </article>
+  `).join("");
 
-    return `
-      <article class="work-card">
-        <div class="work-image ${work.imagen ? "" : "no-image"}" ${image}></div>
-        <div class="work-info">
-          <div class="work-no">${String(index+1).padStart(2,"0")}</div>
-          <div class="work-title">${work.titulo}</div>
-          <div class="work-meta">${work.tecnica} · ${work.año}</div>
-        </div>
-      </article>
-    `;
-  }).join("");
-});
+  grid.querySelectorAll(".work-card").forEach(card => {
+    const open = () => {
+      const work = OBRAS.find(w => w.codigo === card.dataset.code);
+      if(work) openArtwork(work);
+    };
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", e => {
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        open();
+      }
+    });
+  });
 }
 
-/* ====================== EVENTOS ====================== */
-
+/* BOTONES */
 $("openCertificateMenu").addEventListener("click", openAccess);
 $("openCertificateMain").addEventListener("click", openAccess);
 $("closeAccess").addEventListener("click", closeAccess);
 $("closeResult").addEventListener("click", closeResult);
+$("closeArtwork").addEventListener("click", closeArtwork);
 
-$("certificateForm").addEventListener("submit", function(event){
-  event.preventDefault();
+/* CÓDIGO DE CERTIFICADO */
+$("certificateForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
   const code = $("certificateCode").value.trim().toUpperCase();
-
-  if(!code){
-    $("codeError").textContent = "Introduce un código de registro.";
-    return;
-  }
-
-  const work = OBRAS.find(
-    item => item.codigo.trim().toUpperCase() === code
-  );
+  const work = OBRAS.find(w => w.codigo.toUpperCase() === code);
 
   if(!work){
     $("codeError").textContent =
@@ -643,21 +681,28 @@ $("certificateForm").addEventListener("submit", function(event){
   }
 
   closeAccess();
-  openResult(work);
+  openCertificateResult(work);
 });
 
-$("accessModal").addEventListener("click",event=>{
-  if(event.target === $("accessModal")) closeAccess();
+/* CERRAR TOCANDO FUERA */
+$("accessModal").addEventListener("click", e => {
+  if(e.target === $("accessModal")) closeAccess();
 });
 
-$("resultModal").addEventListener("click",event=>{
-  if(event.target === $("resultModal")) closeResult();
+$("resultModal").addEventListener("click", e => {
+  if(e.target === $("resultModal")) closeResult();
 });
 
-document.addEventListener("keydown",event=>{
-  if(event.key === "Escape"){
+$("artworkModal").addEventListener("click", e => {
+  if(e.target === $("artworkModal")) closeArtwork();
+});
+
+/* ESC */
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape"){
     closeAccess();
     closeResult();
+    closeArtwork();
   }
 });
 

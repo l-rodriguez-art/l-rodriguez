@@ -1,7 +1,6 @@
-L.RODRIGUEZ — VERSION CON IMAGENES SEPARADAS
+L.RODRIGUEZ — VERSION FUNCIONAL
 
-Mantén estos archivos en la MISMA carpeta:
-
+Archivos:
 index.html
 obra1.jpg
 obra2.jpg
@@ -9,26 +8,25 @@ obra3.png
 portada.png
 sobre-mi.png
 
-PARA REEMPLAZAR FOTOS
-- Reemplaza obra1.jpg por la nueva foto de la obra 1.
-- Reemplaza obra2.jpg por la nueva foto de la obra 2.
-- Reemplaza obra3.png por la nueva foto de la obra 3.
-- Reemplaza portada.png por la nueva portada.
-- Reemplaza sobre-mi.png por la nueva foto de Sobre mí.
+TODOS deben permanecer en la misma carpeta.
 
-Si conservas el mismo nombre de archivo, NO tienes que modificar
-el index.html.
+OBRAS:
+- Toca una obra y se abre una ventana con su información.
+- No se puede descargar el certificado desde esa ventana.
 
-PARA AGREGAR OBRAS
-Edita la sección OBRAS dentro de index.html y agrega un nuevo objeto.
+CERTIFICADOS:
+- Entra a la sección Certificados.
+- Escribe uno de los códigos configurados.
+- Para probar ahora mismo:
+  LR-2026-001
+  LR-2026-002
+  LR-2026-003
+- Se abre la ficha correspondiente.
+- Cuando agregues un PDF, escribe su nombre en el campo pdf de esa obra:
+  pdf: "certificado1.pdf"
 
-CERTIFICADOS
-Los certificados solamente se consultan desde la sección
-"Certificados" introduciendo el código. Las tarjetas de obras
-no muestran descarga de certificado.
+PARA CAMBIAR UN CÓDIGO:
+codigo: "LR-2026-001"
 
-IMPORTANTE
-Al abrir index.html directamente desde algunos administradores de
-archivos Android, las imágenes pueden no cargarse por restricciones
-del navegador. En GitHub Pages funcionarán correctamente porque
-están en la misma carpeta del sitio.
+PARA REEMPLAZAR FOTOS:
+Conserva el nombre del archivo y reemplázalo.
