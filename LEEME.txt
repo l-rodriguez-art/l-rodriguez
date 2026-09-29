@@ -1,0 +1,34 @@
+L.RODRIGUEZ — VERSION CON IMAGENES SEPARADAS
+
+Mantén estos archivos en la MISMA carpeta:
+
+index.html
+obra1.jpg
+obra2.jpg
+obra3.png
+portada.png
+sobre-mi.png
+
+PARA REEMPLAZAR FOTOS
+- Reemplaza obra1.jpg por la nueva foto de la obra 1.
+- Reemplaza obra2.jpg por la nueva foto de la obra 2.
+- Reemplaza obra3.png por la nueva foto de la obra 3.
+- Reemplaza portada.png por la nueva portada.
+- Reemplaza sobre-mi.png por la nueva foto de Sobre mí.
+
+Si conservas el mismo nombre de archivo, NO tienes que modificar
+el index.html.
+
+PARA AGREGAR OBRAS
+Edita la sección OBRAS dentro de index.html y agrega un nuevo objeto.
+
+CERTIFICADOS
+Los certificados solamente se consultan desde la sección
+"Certificados" introduciendo el código. Las tarjetas de obras
+no muestran descarga de certificado.
+
+IMPORTANTE
+Al abrir index.html directamente desde algunos administradores de
+archivos Android, las imágenes pueden no cargarse por restricciones
+del navegador. En GitHub Pages funcionarán correctamente porque
+están en la misma carpeta del sitio.
