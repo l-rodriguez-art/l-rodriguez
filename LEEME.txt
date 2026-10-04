@@ -1,4 +1,17 @@
-L.RODRIGUEZ — VERSIÓN RESPONSIVE
+L. RODRIGUEZ — VERSION REHECHA
+
+Primera obra cargada con los datos proporcionados:
+
+Título: Colores y curvas
+Fecha/año: 4 de octubre de 2026
+Técnica: Acrílico sobre lienzo
+Medidas: 25 × 30 cm
+No. de registro: LR-2026-0001
+
+Para probar:
+Certificados → LR-2026-0001
+
+El certificado digital muestra esos mismos datos y NO tiene botón de descarga.
 
 Archivos:
 index.html
@@ -9,16 +22,4 @@ obra3.png
 portada.png
 sobre-mi.png
 
-TODOS deben estar en la misma carpeta.
-
-Esta versión:
-- Está optimizada para celular y computadora.
-- Las imágenes NO se recortan en las tarjetas de obras.
-- Las tres obras usan el mismo espacio visual para verse parejas.
-- Al tocar una obra se abre una ventana con su información.
-- Certificados se consultan únicamente desde la sección Certificados.
-- Código de prueba de la primera obra: LR-2026-0001.
-- No hay descarga de certificados.
-
-Para reemplazar una imagen, conserva el mismo nombre.
-Para cambiar el código o los datos, edita la sección OBRAS dentro de index.html.
+Las imágenes están separadas. Para reemplazar una, conserva el mismo nombre.
