@@ -265,6 +265,16 @@ section{padding:105px 0}
 .instagram svg{width:20px;height:20px;display:block}
 .artwork-result .result-image{min-height:360px}
 
+
+.work-card{cursor:pointer}
+.work-card:focus{outline:2px solid var(--pink);outline-offset:3px}
+.verified-badge{
+  display:inline-flex;align-items:center;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:#242424;background:#e4dc32;padding:9px 12px;
+  margin-bottom:14px;font-weight:700;
+}
+
 /* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--line);padding:42px 0}
 .footer{display:flex;justify-content:space-between;gap:30px;align-items:end}
@@ -377,7 +387,7 @@ footer{border-top:1px solid var(--line);padding:42px 0}
       <div class="about-list">
         <div>Obras originales</div>
         <div>Certificado de autenticidad</div>
-        <div>Registro digital de cada obra</div>
+        <div>Certificado digital de autenticidad de cada obra</div>
       </div>
     </div>
   </div>
@@ -414,7 +424,7 @@ footer{border-top:1px solid var(--line);padding:42px 0}
 <div class="modal" id="artworkModal" aria-hidden="true">
   <div class="result-card artwork-result">
     <button class="close" type="button" id="closeArtwork" aria-label="Cerrar">×</button>
-    <div class="result-header">
+    <div class="result-header"><div class="verified-badge">✓ REGISTRO VERIFICADO</div>
       <div class="eyebrow">Obra original</div>
       <h2 class="result-title" id="artTitle"></h2>
     </div>
@@ -488,9 +498,7 @@ footer{border-top:1px solid var(--line);padding:42px 0}
         <div class="detail"><strong>Fecha de registro</strong><span id="resultDate"></span></div>
         <div class="detail"><strong>Descripción</strong><span id="resultDescription"></span></div>
 
-        <a class="btn download" id="downloadPdf" href="#" target="_blank" rel="noopener">
-          Descargar certificado PDF&nbsp;&nbsp;↓
-        </a>
+        
         <div class="no-pdf" id="noPdf" hidden>
           El certificado PDF todavía no ha sido agregado.
         </div>
@@ -512,18 +520,18 @@ El certificado PDF SOLO se muestra después de validar el código.
 */
 const OBRAS = [
   {
-    codigo: "LR-2026-001",
-    titulo: "Obra 01",
-    tecnica: "Por definir",
-    medidas: "Por definir",
-    año: "Por definir",
-    fecha: "Por definir",
+    codigo: "LR-2026-0001",
+    titulo: "Colores y curvas",
+    tecnica: "Acrílico sobre lienzo",
+    medidas: "25 × 30 cm",
+    año: "4 de octubre de 2026",
+    fecha: "4 de octubre de 2026",
     imagen: "obra1.jpg",
     pdf: "",
-    descripcion: "Información de la obra pendiente de completar."
+    descripcion: "Obra original de L. Rodriguez."
   },
   {
-    codigo: "LR-2026-002",
+    codigo: "LR-2026-0002",
     titulo: "Obra 02",
     tecnica: "Por definir",
     medidas: "Por definir",
@@ -531,10 +539,10 @@ const OBRAS = [
     fecha: "Por definir",
     imagen: "obra2.jpg",
     pdf: "",
-    descripcion: "Información de la obra pendiente de completar."
+    descripcion: "Registro pendiente de completar."
   },
   {
-    codigo: "LR-2026-003",
+    codigo: "LR-2026-0003",
     titulo: "Obra 03",
     tecnica: "Por definir",
     medidas: "Por definir",
@@ -542,7 +550,7 @@ const OBRAS = [
     fecha: "Por definir",
     imagen: "obra3.png",
     pdf: "",
-    descripcion: "Información de la obra pendiente de completar."
+    descripcion: "Registro pendiente de completar."
   }
 ];
 
@@ -605,16 +613,8 @@ function openCertificateResult(work){
 
   const pdf = $("downloadPdf");
   const noPdf = $("noPdf");
-
-  if(work.pdf && work.pdf.trim()){
-    pdf.href = work.pdf;
-    pdf.style.display = "inline-flex";
-    noPdf.hidden = true;
-  }else{
-    pdf.removeAttribute("href");
-    pdf.style.display = "none";
-    noPdf.hidden = false;
-  }
+  if(pdf){ pdf.style.display = "none"; pdf.removeAttribute("href"); }
+  if(noPdf){ noPdf.hidden = true; }
 
   $("resultModal").classList.add("open");
   $("resultModal").setAttribute("aria-hidden","false");
