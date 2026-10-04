@@ -1,32 +1,24 @@
-L.RODRIGUEZ — VERSION FUNCIONAL
+L.RODRIGUEZ — VERSIÓN RESPONSIVE
 
 Archivos:
 index.html
+style.css
 obra1.jpg
 obra2.jpg
 obra3.png
 portada.png
 sobre-mi.png
 
-TODOS deben permanecer en la misma carpeta.
+TODOS deben estar en la misma carpeta.
 
-OBRAS:
-- Toca una obra y se abre una ventana con su información.
-- No se puede descargar el certificado desde esa ventana.
+Esta versión:
+- Está optimizada para celular y computadora.
+- Las imágenes NO se recortan en las tarjetas de obras.
+- Las tres obras usan el mismo espacio visual para verse parejas.
+- Al tocar una obra se abre una ventana con su información.
+- Certificados se consultan únicamente desde la sección Certificados.
+- Código de prueba de la primera obra: LR-2026-0001.
+- No hay descarga de certificados.
 
-CERTIFICADOS:
-- Entra a la sección Certificados.
-- Escribe uno de los códigos configurados.
-- Para probar ahora mismo:
-  LR-2026-001
-  LR-2026-002
-  LR-2026-003
-- Se abre la ficha correspondiente.
-- Cuando agregues un PDF, escribe su nombre en el campo pdf de esa obra:
-  pdf: "certificado1.pdf"
-
-PARA CAMBIAR UN CÓDIGO:
-codigo: "LR-2026-001"
-
-PARA REEMPLAZAR FOTOS:
-Conserva el nombre del archivo y reemplázalo.
+Para reemplazar una imagen, conserva el mismo nombre.
+Para cambiar el código o los datos, edita la sección OBRAS dentro de index.html.
