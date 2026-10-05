@@ -140,3 +140,53 @@ footer small{display:block;margin-top:12px;color:#888;font-size:8px}
   nav a:nth-child(2){display:none}
   .hero h1{font-size:45px}
 }
+
+
+/* =========================================================
+   PORTADA: IMAGEN A TODO EL FONDO
+   ========================================================= */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#2d2d2d;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background-image:url("portada.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:.25;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:rgba(45,45,45,.68);
+}
+.hero-copy{
+  position:relative;
+  z-index:2;
+}
+.hero-photo{
+  display:none !important;
+}
+
+@media(max-width:600px){
+  .hero::before{
+    background-position:center center;
+    opacity:.25;
+  }
+  .hero::after{
+    background:rgba(45,45,45,.72);
+  }
+}
+
+.certificate-paper .field strong{
+  color:#242424;
+}

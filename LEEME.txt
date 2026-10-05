@@ -1,19 +1,23 @@
-L. RODRIGUEZ — VERSION REHECHA
+L. RODRIGUEZ — VERSIÓN FINAL
 
-Primera obra cargada con los datos proporcionados:
+CAMBIOS:
+- La imagen portada.png ahora ocupa TODO el fondo de la portada.
+- La imagen de fondo tiene 25% de opacidad.
+- El contenido queda encima de la imagen con una capa oscura para legibilidad.
+- Instagram apunta a la cuenta real de L. Rodriguez.
+- El número de registro NO aparece en las tarjetas ni en la información pública de las obras.
+- Tampoco aparece al abrir una obra.
+- El número de registro solamente aparece después de introducir correctamente el código en Certificados.
+- La primera obra se verifica con LR-2026-0001.
 
+PRIMERA OBRA:
 Título: Colores y curvas
-Fecha/año: 4 de octubre de 2026
+Fecha: 4 de octubre de 2026
 Técnica: Acrílico sobre lienzo
 Medidas: 25 × 30 cm
 No. de registro: LR-2026-0001
 
-Para probar:
-Certificados → LR-2026-0001
-
-El certificado digital muestra esos mismos datos y NO tiene botón de descarga.
-
-Archivos:
+ARCHIVOS:
 index.html
 style.css
 obra1.jpg
@@ -22,4 +26,4 @@ obra3.png
 portada.png
 sobre-mi.png
 
-Las imágenes están separadas. Para reemplazar una, conserva el mismo nombre.
+Las imágenes están separadas para que puedas reemplazarlas sin tocar el HTML.
